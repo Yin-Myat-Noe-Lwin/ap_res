@@ -12,12 +12,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>AP Res Kitchen | Starter</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -28,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
@@ -38,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
@@ -54,17 +55,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dish" class="nav-link active">
+                <a href="/dish" class="nav-link {{ Request::segment(1)=='dish'? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dishes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/order" class="nav-link">
+                <a href="/order" class="nav-link {{ Request::segment(1)=='order'? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Orders</p>
                 </a>
               </li>
+              <li class="nav-item">
+              <form action="logout" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-danger">LogOut</button>
+            </form>
+</li>
             </ul>
           </li>
          
@@ -79,21 +86,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
  
 
-  <!-- Main Footer -->
-  
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/plugins/boostrap/js/boostrap.bundle.min.js"></script>
+
+<script src="/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
 </body>
 </html>
